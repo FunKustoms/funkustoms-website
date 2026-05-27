@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav className="navbar navbar-expand-md navbar-light sticky-top">
       <div className="container">
         {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
             {/* CTA Button */}
             <Link
               to="/customize"
-              className="btn btn-primary d-none d-lg-inline-flex align-items-center gap-2"
+              className="btn btn-primary d-none d-md-inline-flex align-items-center gap-2"
               onClick={closeMenu}
             >
               Start Customizing
