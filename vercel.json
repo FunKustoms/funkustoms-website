@@ -1,0 +1,50 @@
+{
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_API_BASE_URL": {
+      "description": "Backend API URL for production (e.g., https://your-backend.onrender.com/api)",
+      "required": true
+    }
+  },
+  "functions": {
+    "api/**": {
+      "memory": 1024,
+      "timeout": 60
+    }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ],
+      "has": [
+        {
+          "type": "query",
+          "key": "_next"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
